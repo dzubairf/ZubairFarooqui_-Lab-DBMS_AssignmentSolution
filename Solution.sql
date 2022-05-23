@@ -154,6 +154,12 @@ select p.pro_id,p.pro_name
 from `order` as o 
 inner join supplier_pricing as s on o.pricing_id = s.pricing_id
 inner join product as p on s.pro_id = p.pro_id
-where o.ord_date > '2021-10-05'
+where o.ord_date > '2021-10-05';
 
+-- Question 8 
+select cus_name, cus_gender
+from customer 
+where cus_name like 'A%'
+
+-- Question 9
 
