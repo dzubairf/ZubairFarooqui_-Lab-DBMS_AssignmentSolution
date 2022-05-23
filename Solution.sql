@@ -142,3 +142,9 @@ and s.pro_id = p.pro_id;
 select * from supplier where supp_id in (select supp_id from supplier_pricing group by supp_id having count(supp_id) > 1) group by supp_id;
 
 -- Question 6
+select category.cat_id, category.cat_name, min(t2.min_price) as min_price 
+from category inner join
+(select product.cat_id, product.pro_name, t1.* from product inner join
+(select pro_id, min(supp_price) as min_price from supplier_pricing group by pro_id) as t1 
+where t1.pro_id = product.pro_id) as t2 
+where t2.cat_id = category.cat_id group by category.cat_id;
