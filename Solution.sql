@@ -148,3 +148,12 @@ from category inner join
 (select pro_id, min(supp_price) as min_price from supplier_pricing group by pro_id) as t1 
 where t1.pro_id = product.pro_id) as t2 
 where t2.cat_id = category.cat_id group by category.cat_id;
+
+-- Question 7
+select p.pro_id,p.pro_name 
+from `order` as o 
+inner join supplier_pricing as s on o.pricing_id = s.pricing_id
+inner join product as p on s.pro_id = p.pro_id
+where o.ord_date > '2021-10-05'
+
+
