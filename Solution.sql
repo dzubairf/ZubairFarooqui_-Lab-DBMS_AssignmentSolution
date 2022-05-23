@@ -137,3 +137,8 @@ from `order` as o, supplier_pricing as s, product as p
 where o.cus_id = 2 
 and o.pricing_id = s.pricing_id 
 and s.pro_id = p.pro_id;
+
+-- Question 5
+select * from supplier where supp_id in (select supp_id from supplier_pricing group by supp_id having count(supp_id) > 1) group by supp_id;
+
+-- Question 6
