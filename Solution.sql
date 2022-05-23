@@ -167,7 +167,7 @@ CREATE PROCEDURE `get_sppliers_rating` ()
 BEGIN
 	select s.supp_id, s.supp_name, r.rat_ratstars, 
 	Case 
-		when r.rat_ratstars = 5 then 'Excellent Service'
+	when r.rat_ratstars = 5 then 'Excellent Service'
         when r.rat_ratstars >= 4 then 'Good Service'
         when r.rat_ratstars >= 2 then 'Average Service'
         else 'Poor Service'
