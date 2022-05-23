@@ -161,5 +161,21 @@ select cus_name, cus_gender
 from customer 
 where cus_name like 'A%'
 
--- Question 9
+-- Question 9 
+DELIMITER $$
+CREATE PROCEDURE `get_sppliers_rating` ()
+BEGIN
+	select s.supp_id, s.supp_name, r.rat_ratstars, 
+	Case 
+		when r.rat_ratstars = 5 then 'Excellent Service'
+        when r.rat_ratstars >= 4 then 'Good Service'
+        when r.rat_ratstars >= 2 then 'Average Service'
+        else 'Poor Service'
+        END AS Type_of_Service
+from rating as r, `order` as o, supplier_pricing as sp, supplier as s 
+where r.ord_id = o.ord_id and o.pricing_id = sp.pricing_id and sp.supp_id = s.supp_id;
+END;$$
+DELIMITER ;
 
+-- call function
+call get_sppliers_rating
