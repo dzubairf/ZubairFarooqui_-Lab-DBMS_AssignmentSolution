@@ -131,4 +131,9 @@ select cus_gender,count(cus_gender) as no_of_customers from
    where s.supp_price >= 3000) as t
 group by cus_gender;
 
--- 
+-- Question 4
+select p.pro_name, o.* 
+from `order` as o, supplier_pricing as s, product as p
+where o.cus_id = 2 
+and o.pricing_id = s.pricing_id 
+and s.pro_id = p.pro_id;
